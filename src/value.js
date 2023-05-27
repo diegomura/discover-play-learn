@@ -18,6 +18,10 @@ class Value {
     this.#backward = () => {}
   }
 
+  static Zero() {
+    return new Value({ data: 0 })
+  }
+
   get id() {
     return this.#id
   }
@@ -55,6 +59,11 @@ class Value {
     return out
   }
 
+  sub(other) {
+    other = typeof other === 'number' ? new Value({ data: other }) : other
+    return this.add(other.neg())
+  }
+
   mul(other) {
     other = typeof other === 'number' ? new Value({ data: other }) : other
 
@@ -66,6 +75,20 @@ class Value {
     }
 
     return out
+  }
+
+  pow(other) {
+     const out = new Value({ data: this.data**other, children: [this], op: `**${other}` })
+
+     out.backward = () => {
+       this.grad += (other * this.data)**(other - 1)
+     }
+
+     return out
+  }
+
+  neg() {
+    return this.mul(-1)
   }
 
   tanh() {
