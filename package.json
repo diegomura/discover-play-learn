@@ -1,0 +1,17 @@
+{
+  "name": "neural-networks",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node ./src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-graphviz": "^0.1.1",
+    "uuid": "^9.0.0"
+  }
+}
