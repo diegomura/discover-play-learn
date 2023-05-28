@@ -38,8 +38,10 @@ class MLP {
     for (const parameter of this.parameters) parameter.grad = 0
   }
 
-  #update() {
-    for (const parameter of this.parameters) parameter.data += -0.01 * parameter.grad
+  #update({ pass }) {
+    const learningRate = 1.0 - (0.9 * pass) / 100
+
+    for (const parameter of this.parameters) parameter.data += -learningRate * parameter.grad
   }
 
   train({ data, expected, passes = 1000 }) {
@@ -54,7 +56,7 @@ class MLP {
 
       loss.backward()
 
-      this.#update()
+      this.#update({ pass: i })
     }
   }
 }
