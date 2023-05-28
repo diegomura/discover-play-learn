@@ -12,7 +12,13 @@ class MLP {
     return this.layers.reduce((acc, layer) => [...acc, ...layer.parameters], [])
   }
 
+  #castInputs(inputs){
+    return inputs.map((data) => (typeof data === 'number' ? new Value({ data }) : data))
+  }
+
   call(inputs) {
+    inputs = this.#castInputs(inputs)
+
     for (const layer of this.layers) {
       inputs = layer.call(inputs)
     }
@@ -37,7 +43,7 @@ class MLP {
   }
 
   train({ data, expected, passes = 1000 }) {
-    data = data.map(input => input.map(data => typeof data === 'number' ? new Value({ data }) : data))
+    data = data.map(this.#castInputs)
 
     for (let i = 0; i < passes; i++) {
       const predictions = this.#forwardPass({ data })
