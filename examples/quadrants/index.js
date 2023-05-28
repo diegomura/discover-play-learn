@@ -1,8 +1,8 @@
 import { exec } from 'child_process'
 
-import MLP from '../../engine/mlp.js'
-import { createGradient } from '../../render/colors.js'
-import createScatteredChart from '../../render/scattered-chart.js'
+import MLP from '../../src/engine/mlp.js'
+import { createGradient } from '../../src/render/colors.js'
+import createScatteredChart from '../../src/render/scattered-chart.js'
 
 // Create and train neuron network
 
@@ -72,7 +72,7 @@ mlp.train({ data, expected, passes: 1000 })
 
 // Render results
 
-const gradient = createGradient({ start: '#FF0000', end: '#0000FF' })
+const gradient = createGradient({ steps: ['#FF0000', '#00FF00', '#0000FF'] })
 const scatteredChart = createScatteredChart({ title: 'Quadrants Experiment', xAxis: [-10, 10], yAxis: [-10, 10] })
 
 for (let i = 0; i < 10000; i++) {
