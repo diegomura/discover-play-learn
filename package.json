@@ -11,6 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chartist-svg": "^0.2.4",
+    "javascript-color-gradient": "^2.4.4",
     "node-graphviz": "^0.1.1",
     "uuid": "^9.0.0"
   }

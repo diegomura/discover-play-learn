@@ -40,7 +40,7 @@ const viewNode = (node) => {
   return res
 }
 
-const viewGraph = (root, fileName = './graph.svg') => {
+const renderGraph = (root, fileName = './graph.svg') => {
   const { nodes, edges } = trace(root)
 
   let graph = 'digraph {'
@@ -68,4 +68,4 @@ const viewGraph = (root, fileName = './graph.svg') => {
   })
 }
 
-export default viewGraph
+export default renderGraph

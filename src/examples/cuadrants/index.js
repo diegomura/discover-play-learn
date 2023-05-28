@@ -1,4 +1,6 @@
 import MLP from '../../engine/mlp.js'
+import { createGradient } from '../../render/colors.js'
+import renderScatteredChart from '../../render/scatteredChart.js'
 
 const mlp = new MLP({ nin: 2, nouts: [4, 4, 1] })
 
@@ -68,9 +70,20 @@ const getRandomPoint = () => {
   return [randomX, randomY]
 }
 
-for (let i = 0; i < 500; i++) {
+const data = []
+
+for (let i = 0; i < 50000; i++) {
   const point = getRandomPoint()
   const pred = mlp.call(point)
 
-  console.log(point, pred.data > 0 ? 0 : 1)
+  data.push({ x: point[0], y: point[1], value: pred.data })
 }
+
+const gradient = createGradient({ start: '#FF0000', end: '#0000FF' })
+
+renderScatteredChart({
+  data,
+  xAxis: [-10, 10],
+  yAxis: [-10, 10],
+  style: { fill: (value) => gradient.get(value) },
+})
