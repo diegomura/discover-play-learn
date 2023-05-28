@@ -1,89 +1,94 @@
+import { exec } from 'child_process'
+
 import MLP from '../../engine/mlp.js'
 import { createGradient } from '../../render/colors.js'
-import renderScatteredChart from '../../render/scatteredChart.js'
+import createScatteredChart from '../../render/scattered-chart.js'
+
+// Create and train neuron network
 
 const mlp = new MLP({ nin: 2, nouts: [4, 4, 1] })
 
 const trainingData = [
+  // center
+  { value: [0, 0], expected: 0 },
   // top-left
-  [-2, 5],
-  [-3, 7],
-  [-4, 6],
-  [-6, 8],
-  [-7, 9],
-  [-8, 6],
-  [-9, 4],
-  [-10, 3],
-  [-6, 10],
-  [-7, 12],
+  { value: [-1, 1], expected: -1 },
+  { value: [-1, 9], expected: -1 },
+  { value: [-2, 5], expected: -1 },
+  { value: [-3, 7], expected: -1 },
+  { value: [-4, 6], expected: -1 },
+  { value: [-6, 8], expected: -1 },
+  { value: [-7, 9], expected: -1 },
+  { value: [-8, 6], expected: -1 },
+  { value: [-9, 4], expected: -1 },
+  { value: [-10, 3], expected: -1 },
+  { value: [-6, 10], expected: -1 },
+  { value: [-7, 12], expected: -1 },
   // top-right
-  [2, 5],
-  [3, 7],
-  [4, 6],
-  [6, 8],
-  [7, 9],
-  [8, 6],
-  [9, 4],
-  [10, 3],
-  [6, 10],
-  [7, 12],
+  { value: [1, 1], expected: 1 },
+  { value: [1, 9], expected: 1 },
+  { value: [2, 5], expected: 1 },
+  { value: [3, 7], expected: 1 },
+  { value: [4, 6], expected: 1 },
+  { value: [6, 8], expected: 1 },
+  { value: [7, 9], expected: 1 },
+  { value: [8, 6], expected: 1 },
+  { value: [9, 4], expected: 1 },
+  { value: [10, 3], expected: 1 },
+  { value: [6, 10], expected: 1 },
+  { value: [7, 12], expected: 1 },
   // bottom-left
-  [-2, -5],
-  [-3, -7],
-  [-4, -6],
-  [-6, -8],
-  [-7, -9],
-  [-8, -6],
-  [-9, -4],
-  [-10, -3],
-  [-6, -10],
-  [-7, -12],
+  { value: [-1, -1], expected: -1 },
+  { value: [-1, -9], expected: -1 },
+  { value: [-2, -5], expected: -1 },
+  { value: [-3, -7], expected: -1 },
+  { value: [-4, -6], expected: -1 },
+  { value: [-6, -8], expected: -1 },
+  { value: [-7, -9], expected: -1 },
+  { value: [-8, -6], expected: -1 },
+  { value: [-9, -4], expected: -1 },
+  { value: [-10, -3], expected: -1 },
+  { value: [-6, -10], expected: -1 },
+  { value: [-7, -12], expected: -1 },
   // bottom-right
-  [2, -5],
-  [3, -7],
-  [4, -6],
-  [6, -8],
-  [7, -9],
-  [8, -6],
-  [9, -4],
-  [10, -3],
-  [6, -10],
-  [7, -12],
+  { value: [1, -1], expected: 1 },
+  { value: [1, -9], expected: 1 },
+  { value: [2, -5], expected: 1 },
+  { value: [3, -7], expected: 1 },
+  { value: [4, -6], expected: 1 },
+  { value: [6, -8], expected: 1 },
+  { value: [7, -9], expected: 1 },
+  { value: [8, -6], expected: 1 },
+  { value: [9, -4], expected: 1 },
+  { value: [10, -3], expected: 1 },
+  { value: [6, -10], expected: 1 },
+  { value: [7, -12], expected: 1 },
 ]
 
-const expected = [
-  -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, 1, 1,
-  1, 1, 1, 1, 1, 1, 1,
-]
+const data = trainingData.map(({ value }) => value)
+const expected = trainingData.map(({ expected }) => expected)
 
-mlp.train({ data: trainingData, expected, passes: 1000 })
+mlp.train({ data, expected, passes: 1000 })
 
-const getRandomPoint = () => {
-  const minX = -10
-  const maxX = 10
-  const minY = -10
-  const maxY = 10
-
-  const randomX = minX + Math.random() * (maxX - minX)
-  const randomY = minY + Math.random() * (maxY - minY)
-
-  return [randomX, randomY]
-}
-
-const data = []
-
-for (let i = 0; i < 50000; i++) {
-  const point = getRandomPoint()
-  const pred = mlp.call(point)
-
-  data.push({ x: point[0], y: point[1], value: pred.data })
-}
+// Render results
 
 const gradient = createGradient({ start: '#FF0000', end: '#0000FF' })
+const scatteredChart = createScatteredChart({ title: 'Number Sign Experiment', xAxis: [-10, 10], yAxis: [-10, 10] })
 
-renderScatteredChart({
-  data,
-  xAxis: [-10, 10],
-  yAxis: [-10, 10],
-  style: { fill: (value) => gradient.get(value) },
-})
+for (let i = 0; i < 10000; i++) {
+  const x = -10 + Math.random() * 20
+  const y = -10 + Math.random() * 20
+  const pred = mlp.call([x, y])
+
+  scatteredChart.addPoint({ x, y, fill: gradient.get(pred.data) })
+}
+
+for (const entry of data) {
+  scatteredChart.addPoint({ x: entry[0], y: entry[1], fill: 'black', radius: 4 })
+}
+
+const fileName = new URL('chart.svg', import.meta.url)
+
+scatteredChart.export(fileName)
+
+exec(`open "${fileName}"`)
