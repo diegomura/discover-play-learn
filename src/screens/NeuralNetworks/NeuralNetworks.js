@@ -10,7 +10,7 @@ import NeuralNetwork from './components/NerualNetwork';
 import ScatteredChart from './components/ScatteredChart';
 import Point from './utils/Point';
 
-const mlp = new MLP({ nin: 2, nouts: [4, 4, 1] });
+const mlp = new MLP({ nin: 2, nouts: [3, 4, 1] });
 
 const trainingData = [
   // center
@@ -77,11 +77,16 @@ const gradient = createGradient({
   range: [-3, 3],
 });
 
-const testData = [...Array(1000).keys()].map(() => {
-  const x = -10 + Math.random() * 20;
-  const y = -10 + Math.random() * 20;
-  return new Point({ x, y });
-});
+const resolution = 0.5;
+const xAxis = [-10, 10];
+const yAxis = [-10, 10];
+const testData = [];
+
+for (let x = xAxis[0] - 1; x <= xAxis[1] + 1; x += resolution) {
+  for (let y = yAxis[0] - 1; y <= yAxis[1] + 1; y += resolution) {
+    testData.push(new Point({ x, y }));
+  }
+}
 
 const NeuralNetworks = () => {
   const handleTrain = () => {
@@ -99,7 +104,9 @@ const NeuralNetworks = () => {
       if (currentPass % step === 0) {
         testData.map(point => {
           const pred = mlp.call([point.x, point.y]);
-          point.setColor(gradient.get(pred.data));
+          const color = gradient.get(pred.data);
+
+          point.setColor(color);
         });
       }
 
@@ -119,12 +126,13 @@ const NeuralNetworks = () => {
         alignItems="center"
         justifyContent="center"
       >
-        <NeuralNetwork h="100%" mlp={mlp} gradient={gradient} />
+        <NeuralNetwork w="65vw" mlp={mlp} gradient={gradient} />
 
         <ScatteredChart
-          width={300}
-          height={300}
-          style={{ height: '100%' }}
+          w={'25vw'}
+          xAxis={xAxis}
+          yAxis={yAxis}
+          resolution={resolution}
           points={testData}
         />
       </Flex>

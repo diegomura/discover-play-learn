@@ -6,7 +6,7 @@ class Point extends EventEmitter {
 
     this.x = x;
     this.y = y;
-    this.key = `${x}${y}`;
+    this.key = `${x}-${y}`;
     this.color = 'black';
   }
 

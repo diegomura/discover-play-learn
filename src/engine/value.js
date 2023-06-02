@@ -1,5 +1,6 @@
 import EventEmitter from 'events';
-import { v4 as uuidv4 } from 'uuid';
+
+let id = 0;
 
 class Value extends EventEmitter {
   constructor({ data, children = [], op = '', label = '' }) {
@@ -8,7 +9,7 @@ class Value extends EventEmitter {
     this.data = data;
     this.grad = 0;
 
-    this.id = uuidv4();
+    this.id = id++;
     this.op = op;
     this.label = label;
     this.prev = children;
@@ -102,11 +103,11 @@ class Value extends EventEmitter {
     this.grad = 1;
 
     const topo = [];
-    const visited = [];
+    const visited = {};
 
     const buildTopo = v => {
-      if (!visited.includes(v)) {
-        visited.push(v);
+      if (!visited[v]) {
+        visited[v.id] = true;
         v.prev.forEach(child => buildTopo(child));
         topo.push(v);
       }

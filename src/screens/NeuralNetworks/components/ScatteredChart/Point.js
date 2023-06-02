@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const Point = ({ cx, cy, point }) => {
+const Point = ({ x, y, width, height, point }) => {
   const [color, setColor] = useState(point.color);
 
   useEffect(() => {
@@ -9,7 +9,7 @@ const Point = ({ cx, cy, point }) => {
     return () => point.removeListener('update', handleColorChange);
   }, [point]);
 
-  return <circle cx={cx} cy={cy} r={5} fill={color} />;
+  return <rect x={x} y={y} width={width} height={width} fill={color} />;
 };
 
 export default Point;
