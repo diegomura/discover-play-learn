@@ -1,7 +1,10 @@
+import { v4 as uuidv4 } from 'uuid';
+
 import Value from './value.js';
 
 class Neuron {
   constructor({ nin }) {
+    this.id = uuidv4();
     this.bias = new Value({ data: Math.random() * 2 - 1 });
     this.weights = Array.from(
       { length: nin },

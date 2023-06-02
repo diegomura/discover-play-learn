@@ -3,6 +3,8 @@ import Value from './value.js';
 
 class MLP {
   constructor({ nin, nouts }) {
+    this.loss = Value.Zero();
+
     const sizes = [nin, ...nouts];
 
     this.layers = Array.from(
@@ -51,23 +53,27 @@ class MLP {
 
   #update() {
     for (const parameter of this.parameters)
-      parameter.data += -0.01 * parameter.grad;
+      parameter.set(parameter.data + -0.01 * parameter.grad);
   }
 
-  train({ data, expected, passes = 1000 }) {
+  train({ data, expected }) {
     data = data.map(this.#castInputs);
 
-    for (let i = 0; i < passes; i++) {
+    const next = () => {
       const predictions = this.#forwardPass({ data });
 
       const loss = this.#evaluateLoss({ predictions, expected });
+
+      this.loss.set(loss.data);
 
       this.#zeroGrad();
 
       loss.backward();
 
       this.#update();
-    }
+    };
+
+    return { next };
   }
 }
 

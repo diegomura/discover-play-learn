@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import {
+  Box,
   Button,
   Drawer,
   DrawerBody,
@@ -23,7 +24,7 @@ const Root = () => {
   useEffect(() => onClose(), [location]);
 
   return (
-    <main>
+    <Box as="main" minH="100vh">
       <Button
         position="absolute"
         top={1}
@@ -31,6 +32,7 @@ const Root = () => {
         variant="ghost"
         color="black"
         margin={2}
+        zIndex={1000}
         onClick={onOpen}
       >
         <Icon as={BiMenu} w={8} h={8} />
@@ -52,7 +54,7 @@ const Root = () => {
       </Drawer>
 
       <Outlet />
-    </main>
+    </Box>
   );
 };
 

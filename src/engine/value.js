@@ -1,7 +1,10 @@
+import EventEmitter from 'events';
 import { v4 as uuidv4 } from 'uuid';
 
-class Value {
+class Value extends EventEmitter {
   constructor({ data, children = [], op = '', label = '' }) {
+    super();
+
     this.data = data;
     this.grad = 0;
 
@@ -14,6 +17,11 @@ class Value {
 
   static Zero() {
     return new Value({ data: 0 });
+  }
+
+  set(data) {
+    this.data = data;
+    this.emit('update', data);
   }
 
   add(other) {

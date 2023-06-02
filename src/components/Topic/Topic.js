@@ -16,25 +16,29 @@ const Topic = ({ title, children }) => {
 
   return (
     <>
-      <Flex flexDirection="column">
-        <Flex
-          h={63}
-          paddingLeft={105}
-          borderBottomWidth={1}
-          borderBottomStyle="solid"
-          borderColor="lightGray"
-          alignItems="center"
-        >
-          <Heading as="h2" size="lg" flex={1}>
-            {title}
-          </Heading>
+      <Flex
+        h={63}
+        w="100%"
+        top={0}
+        position="absolute"
+        paddingLeft={105}
+        borderBottomWidth={1}
+        borderBottomStyle="solid"
+        borderColor="lightGray"
+        alignItems="center"
+        backgroundColor="white"
+      >
+        <Heading as="h2" size="lg" flex={1}>
+          {title}
+        </Heading>
 
-          <Button variant="ghost" color="black" margin={2} onClick={onOpen}>
-            <Icon as={BiBook} w={8} h={8} />
-          </Button>
-        </Flex>
+        <Button variant="ghost" color="black" margin={2} onClick={onOpen}>
+          <Icon as={BiBook} w={8} h={8} />
+        </Button>
+      </Flex>
 
-        <Flex flex={1}>{children}</Flex>
+      <Flex pt={63} h="100vh" flexDirection="column">
+        {children}
       </Flex>
 
       <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
