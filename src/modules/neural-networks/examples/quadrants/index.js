@@ -1,12 +1,12 @@
-import { exec } from 'child_process'
+import { exec } from 'child_process';
 
-import MLP from '../../src/engine/mlp.js'
-import { createGradient } from '../../src/render/colors.js'
-import createScatteredChart from '../../src/render/scattered-chart.js'
+import MLP from '../../src/modules/neural-networks/mlp.js';
+import { createGradient } from '../../src/render/colors.js';
+import createScatteredChart from '../../src/render/scattered-chart.js';
 
 // Create and train neuron network
 
-const mlp = new MLP({ nin: 2, nouts: [4, 4, 1] })
+const mlp = new MLP({ nin: 2, nouts: [4, 4, 1] });
 
 const trainingData = [
   // center
@@ -63,32 +63,41 @@ const trainingData = [
   { value: [10, -3], expected: -1 },
   { value: [6, -10], expected: -1 },
   { value: [7, -12], expected: -1 },
-]
+];
 
-const data = trainingData.map(({ value }) => value)
-const expected = trainingData.map(({ expected }) => expected)
+const data = trainingData.map(({ value }) => value);
+const expected = trainingData.map(({ expected }) => expected);
 
-mlp.train({ data, expected, passes: 1000 })
+mlp.train({ data, expected, passes: 1000 });
 
 // Render results
 
-const gradient = createGradient({ steps: ['#FF0000', '#00FF00', '#0000FF'] })
-const scatteredChart = createScatteredChart({ title: 'Quadrants Experiment', xAxis: [-10, 10], yAxis: [-10, 10] })
+const gradient = createGradient({ steps: ['#FF0000', '#00FF00', '#0000FF'] });
+const scatteredChart = createScatteredChart({
+  title: 'Quadrants Experiment',
+  xAxis: [-10, 10],
+  yAxis: [-10, 10],
+});
 
 for (let i = 0; i < 10000; i++) {
-  const x = -10 + Math.random() * 20
-  const y = -10 + Math.random() * 20
-  const pred = mlp.call([x, y])
+  const x = -10 + Math.random() * 20;
+  const y = -10 + Math.random() * 20;
+  const pred = mlp.call([x, y]);
 
-  scatteredChart.addPoint({ x, y, fill: gradient.get(pred.data) })
+  scatteredChart.addPoint({ x, y, fill: gradient.get(pred.data) });
 }
 
 for (const entry of data) {
-  scatteredChart.addPoint({ x: entry[0], y: entry[1], fill: 'black', radius: 4 })
+  scatteredChart.addPoint({
+    x: entry[0],
+    y: entry[1],
+    fill: 'black',
+    radius: 4,
+  });
 }
 
-const fileName = new URL('chart.svg', import.meta.url)
+const fileName = new URL('chart.svg', import.meta.url);
 
-scatteredChart.export(fileName)
+scatteredChart.export(fileName);
 
-exec(`open "${fileName}"`)
+exec(`open "${fileName}"`);

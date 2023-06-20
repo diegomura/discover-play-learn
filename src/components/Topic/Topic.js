@@ -3,7 +3,9 @@ import {
   Heading,
   Button,
   Icon,
+  Stack,
   Drawer,
+  DrawerBody,
   DrawerHeader,
   DrawerContent,
   DrawerOverlay,
@@ -11,7 +13,9 @@ import {
 } from '@chakra-ui/react';
 import { BiBook } from 'react-icons/bi';
 
-const Topic = ({ title, children }) => {
+import Source from './Source';
+
+const Topic = ({ title, sources = [], children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -41,11 +45,19 @@ const Topic = ({ title, children }) => {
         {children}
       </Flex>
 
-      <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
+      <Drawer placement="right" size="sm" onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
 
         <DrawerContent>
           <DrawerHeader borderBottomWidth="1px">Sources</DrawerHeader>
+
+          <DrawerBody>
+            <Stack direction="column">
+              {sources.map(source => (
+                <Source key={source.link} {...source} />
+              ))}
+            </Stack>
+          </DrawerBody>
         </DrawerContent>
       </Drawer>
     </>
