@@ -7,23 +7,23 @@ const Home = () => {
     <Center h="100vh" axis="both">
       <Stack direction="column" align="center" maxW={700}>
         <Heading fontSize={60} mb={10}>
-          AI Learning!
+          Discover, Play, Learn
         </Heading>
 
-        <Text align="center" mb={4}>
-          Okay. It's finally time to delve into AI.
-        </Text>
-        <Text align="center" mb={4}>
-          Studying this topic has been on my list for a long time, and let's be
-          honest, I might give up soon after starting. But let's at least give
-          it a try :)
-        </Text>
         <Text align="center" mb={10}>
           The goal of this site is to serve as a personal (yet public)
           playground for exploring the topics I've been reading about and to
           have some fun, as well as a place to store references and perhaps some
           accompanying notes.
         </Text>
+
+        <Text align="center" mb={10}>
+          Don't expect anything on this site to make any sense! Topics may not
+          even be related to each other or categorized within the field of
+          Computer Science. I have no plans for it, and I might abandon it after
+          a few days. Who knows what the future holds.
+        </Text>
+
         <SimpleGrid columns={4} spacing={4}>
           <TopicCard
             topic="Neural Networks"
