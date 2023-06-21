@@ -5,6 +5,7 @@ import Root from './Root';
 import Home from './Home';
 import NotFound from './NotFound';
 import NeuralNetworks from './NeuralNetworks';
+import Utf8Encoding from './Utf8Encoding';
 
 const Router = ({ children }) => {
   return (
@@ -22,6 +23,7 @@ const Screens = () => {
   return (
     <Router>
       <Route path="/" element={<Home />} />
+      <Route path="/utf-8-encoding" element={<Utf8Encoding />} />
       <Route path="/neural-networks" element={<NeuralNetworks />} />
     </Router>
   );

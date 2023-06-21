@@ -47,6 +47,7 @@ const Root = () => {
           <DrawerBody>
             <Stack direction="column">
               <Link to={`/`}>Home</Link>
+              <Link to={`/utf-8-encoding`}>UTF-8 Encoding</Link>
               <Link to={`/neural-networks`}>Neural Networks</Link>
             </Stack>
           </DrawerBody>

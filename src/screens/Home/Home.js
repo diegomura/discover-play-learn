@@ -1,5 +1,6 @@
 import { SimpleGrid, Heading, Stack, Center, Text } from '@chakra-ui/react';
-import { BiNetworkChart, BiQuestionMark } from 'react-icons/bi';
+import { BiNetworkChart, BiQuestionMark, BiBarcode } from 'react-icons/bi';
+
 import TopicCard from './components/TopicCard/TopicCard';
 
 const Home = () => {
@@ -26,6 +27,12 @@ const Home = () => {
 
         <SimpleGrid columns={4} spacing={4}>
           <TopicCard
+            topic="UTF-8 Encoding"
+            icon={BiBarcode}
+            href="/utf-8-encoding"
+          />
+
+          <TopicCard
             topic="Neural Networks"
             icon={BiNetworkChart}
             href="/neural-networks"
@@ -39,14 +46,7 @@ const Home = () => {
           />
 
           <TopicCard
-            topic="Maybe not..."
-            icon={BiQuestionMark}
-            href="/"
-            disabled
-          />
-
-          <TopicCard
-            topic="Who knows?"
+            topic="Maybe not"
             icon={BiQuestionMark}
             href="/"
             disabled

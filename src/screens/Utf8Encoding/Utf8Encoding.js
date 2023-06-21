@@ -1,0 +1,117 @@
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+
+import { Flex, Text } from '@chakra-ui/react';
+
+import sources from './sources';
+import Topic from '../../components/Topic';
+import Codes from './components/Codes';
+import HexCode from './components/HexCode';
+import BinCode from './components/BinCode';
+import * as utf8 from '../../modules/utf-8';
+
+const INITIAL_TEXT = 'd1£ठ💩';
+
+const Utf8Encoding = () => {
+  const input = useRef();
+  const [hovered, setHovered] = useState(null);
+  const [text, setText] = useState(INITIAL_TEXT);
+
+  const handleChange = e => {
+    setText(e.target.textContent);
+  };
+
+  const encoding = useMemo(() => utf8.encode(text), [text]);
+
+  const onSelect = () => {
+    const selection = window.getSelection();
+
+    if (selection.rangeCount !== 1) return;
+    if (selection.focusNode !== input.current.firstChild) return;
+
+    const index = Math.min(selection.baseOffset, selection.focusOffset);
+
+    setHovered(index);
+  };
+
+  const onCodeHover = i => {
+    setHovered(i);
+  };
+
+  const onCodeBlur = () => {
+    setHovered(null);
+  };
+
+  useEffect(() => {
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+
+    if (hovered !== null) {
+      const range = document.createRange();
+      const text = input.current.firstChild;
+
+      try {
+        range.setStart(text, hovered);
+        range.setEnd(text, hovered + 1);
+        selection.addRange(range);
+      } catch (error) {
+        // noop
+      }
+    }
+  }, [hovered]);
+
+  return (
+    <Topic title="UTF-8 Encoding" sources={sources}>
+      <Flex
+        w="100%"
+        h="calc(100vh - 210px)"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Text
+          ref={input}
+          autoFocus
+          fontSize={135}
+          contentEditable
+          marginRight={20}
+          marginLeft={20}
+          maxLength={20}
+          textAlign="center"
+          outline="none"
+          suppressContentEditableWarning
+          dangerouslySetInnerHTML={{ __html: INITIAL_TEXT }}
+          spellCheck={false}
+          onInput={handleChange}
+          onMouseUp={onSelect}
+        />
+      </Flex>
+
+      <Flex
+        h={210}
+        borderTopWidth={1}
+        borderTopStyle="solid"
+        borderColor="lightGray"
+      >
+        <Codes
+          title="HEX"
+          CodeComponent={HexCode}
+          encoding={encoding}
+          hovered={hovered}
+          style={{ borderRight: '1px solid lightGray' }}
+          onHover={onCodeHover}
+          onBlur={onCodeBlur}
+        />
+
+        <Codes
+          title="Binary"
+          CodeComponent={BinCode}
+          encoding={encoding}
+          hovered={hovered}
+          onHover={onCodeHover}
+          onBlur={onCodeBlur}
+        />
+      </Flex>
+    </Topic>
+  );
+};
+
+export default Utf8Encoding;

@@ -1,0 +1,9 @@
+::-moz-selection {
+  background: #afafaf;
+}
+::-webkit-selection {
+  background: #afafaf;
+}
+::selection {
+  background: #afafaf;
+}
