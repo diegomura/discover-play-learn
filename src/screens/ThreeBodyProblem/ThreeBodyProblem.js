@@ -50,6 +50,7 @@ const ThreeBodyProblem = () => {
     const animate = () => {
       model.next();
       setPositions(model.getPositions());
+
       requestAnimationFrame(() => animate());
     };
 
@@ -57,7 +58,7 @@ const ThreeBodyProblem = () => {
   }, []);
 
   return (
-    <Topic title="Three Body Problem" sources={sources}>
+    <Topic title="Three Body Problem" theme="dark" sources={sources}>
       <Canvas camera={camera} style={{ backgroundColor: 'black' }}>
         <OrbitControls />
 
