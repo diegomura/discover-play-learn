@@ -6,9 +6,12 @@ import {
   BiPlanet,
 } from 'react-icons/bi';
 
+import useTheme from '../../hooks/useTheme';
 import TopicCard from './components/TopicCard/TopicCard';
 
 const Home = () => {
+  useTheme('light');
+
   return (
     <Center h="100vh" axis="both">
       <Stack direction="column" align="center" maxW={700}>

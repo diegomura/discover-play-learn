@@ -11,12 +11,16 @@ import {
   DrawerOverlay,
   useDisclosure,
 } from '@chakra-ui/react';
+
 import { BiBook } from 'react-icons/bi';
 
 import Source from './Source';
+import useTheme from '../../hooks/useTheme';
 
-const Topic = ({ title, sources = [], children }) => {
+const Topic = ({ title, theme = 'light', sources = [], children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  useTheme(theme);
 
   return (
     <>
@@ -30,13 +34,13 @@ const Topic = ({ title, sources = [], children }) => {
         borderBottomStyle="solid"
         borderColor="lightGray"
         alignItems="center"
-        backgroundColor="white"
+        backgroundColor={theme === 'dark' ? 'black' : 'white'}
       >
         <Heading as="h2" size="lg" flex={1}>
           {title}
         </Heading>
 
-        <Button variant="ghost" color="black" margin={2} onClick={onOpen}>
+        <Button variant="ghost" margin={2} onClick={onOpen}>
           <Icon as={BiBook} w={8} h={8} />
         </Button>
       </Flex>

@@ -30,7 +30,6 @@ const Root = () => {
         top={1}
         left={0}
         variant="ghost"
-        color="black"
         margin={2}
         zIndex={1000}
         onClick={onOpen}

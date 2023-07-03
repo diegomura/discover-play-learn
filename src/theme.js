@@ -7,6 +7,11 @@ const breakpoints = {
   xl: '80em',
 };
 
+const config = {
+  initialColorMode: 'light',
+  useSystemColorMode: false,
+};
+
 const theme = extendTheme({
   colors: {
     primary: '#FFFFFF',
@@ -16,6 +21,7 @@ const theme = extendTheme({
   },
   color: 'foreground',
   breakpoints,
+  config,
 });
 
 export default theme;
