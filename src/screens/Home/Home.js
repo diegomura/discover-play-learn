@@ -1,5 +1,10 @@
 import { SimpleGrid, Heading, Stack, Center, Text } from '@chakra-ui/react';
-import { BiNetworkChart, BiQuestionMark, BiBarcode } from 'react-icons/bi';
+import {
+  BiNetworkChart,
+  BiQuestionMark,
+  BiBarcode,
+  BiPlanet,
+} from 'react-icons/bi';
 
 import TopicCard from './components/TopicCard/TopicCard';
 
@@ -39,14 +44,13 @@ const Home = () => {
           />
 
           <TopicCard
-            topic="Other soon.."
-            icon={BiQuestionMark}
-            href="/"
-            disabled
+            topic="Three Body"
+            icon={BiPlanet}
+            href="/three-body-problem"
           />
 
           <TopicCard
-            topic="Maybe not"
+            topic="Other soon..."
             icon={BiQuestionMark}
             href="/"
             disabled
