@@ -1,9 +1,5 @@
-import EventEmitter from 'events';
-
-class Point extends EventEmitter {
+class Point {
   constructor({ x, y }) {
-    super();
-
     this.x = x;
     this.y = y;
     this.key = `${x}-${y}`;
@@ -12,7 +8,6 @@ class Point extends EventEmitter {
 
   setColor(color) {
     this.color = color;
-    this.emit('update', { color });
   }
 }
 

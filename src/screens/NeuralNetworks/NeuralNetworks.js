@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Button, Flex, Stack } from '@chakra-ui/react';
+import { Box, Button, Flex } from '@chakra-ui/react';
 
 import MLP from '../../modules/neural-networks/engine/mlp';
 import { createGradient } from '../../modules/neural-networks/render/colors';
@@ -131,6 +131,7 @@ const NeuralNetworks = () => {
 
         <ScatteredChart
           w={'25vw'}
+          h={'25vw'}
           xAxis={xAxis}
           yAxis={yAxis}
           resolution={resolution}
@@ -140,17 +141,20 @@ const NeuralNetworks = () => {
 
       <Box
         h={70}
+        display="flex"
         borderTopWidth={1}
         borderTopStyle="solid"
         borderColor="lightGray"
+        alignItems="center"
+        justifyContent="flex-end"
+        paddingRight={5}
+        paddingLeft={5}
       >
-        <Stack direction="row">
-          <Button onClick={handleTrain}>Train</Button>
+        <Loss value={mlp.loss} />
 
-          <Box>
-            <Loss value={mlp.loss} />
-          </Box>
-        </Stack>
+        <Button marginLeft={5} onClick={handleTrain}>
+          Train
+        </Button>
       </Box>
     </Topic>
   );
