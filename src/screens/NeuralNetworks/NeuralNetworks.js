@@ -103,7 +103,7 @@ const NeuralNetworks = () => {
       const step = Math.max(1, Math.abs(currentPass / 3));
 
       if (currentPass % step === 0) {
-        testData.map(point => {
+        testData.forEach(point => {
           const pred = mlp.call([point.x, point.y]);
           const color = gradient.get(pred.data);
 

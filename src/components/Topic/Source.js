@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Icon, Box, Flex } from '@chakra-ui/react';
+import { Text, Icon, Flex } from '@chakra-ui/react';
 import { BiVideo, BiLink } from 'react-icons/bi';
 
 import Link from '../../components/Link';

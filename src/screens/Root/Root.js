@@ -21,6 +21,7 @@ const Root = () => {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => onClose(), [location]);
 
   return (

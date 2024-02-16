@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useBoolean } from '@chakra-ui/react';
 
 const Weight = ({ from, to, value, gradient }) => {
