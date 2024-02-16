@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+
 import { SimpleGrid, Heading, Stack, Center, Text } from '@chakra-ui/react';
 import {
   BiNetworkChart,

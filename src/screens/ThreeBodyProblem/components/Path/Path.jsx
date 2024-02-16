@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Line } from '@react-three/drei';
 
 const Path = ({ position, color }) => {

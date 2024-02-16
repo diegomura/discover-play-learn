@@ -1,8 +1,7 @@
-import React from 'react';
 import { Text, Icon, Flex } from '@chakra-ui/react';
 import { BiVideo, BiLink } from 'react-icons/bi';
 
-import Link from '../../components/Link';
+import Link from '../Link';
 
 const IconTypes = {
   video: BiVideo,

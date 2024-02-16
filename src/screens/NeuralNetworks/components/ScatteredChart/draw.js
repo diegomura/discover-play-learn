@@ -28,7 +28,7 @@ const drawXAxis = ({ ctx, width, height, xAxis, yAxis, xScale, yScale }) => {
   ctx.restore();
 };
 
-const drawYAxis = ({ ctx, width, height, xAxis, yAxis, xScale, yScale }) => {
+const drawYAxis = ({ ctx, height, xAxis, yAxis, xScale, yScale }) => {
   const yAxisX = (0 - xAxis[0]) * xScale;
 
   ctx.save();
@@ -60,7 +60,6 @@ const drawYAxis = ({ ctx, width, height, xAxis, yAxis, xScale, yScale }) => {
 
 const drawPoints = ({
   ctx,
-  width,
   height,
   points,
   resolution,

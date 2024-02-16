@@ -1,5 +1,4 @@
 import { Text } from '@chakra-ui/react';
-import React from 'react';
 
 const toHex = code => {
   return code.toString(16).toUpperCase().padStart(2, '0');

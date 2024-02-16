@@ -1,4 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+/* eslint-disable react/no-unknown-property */
+
+import { useEffect, useRef, useState } from 'react';
 
 const Sun = ({ position, mass }) => {
   const meshRef = useRef();

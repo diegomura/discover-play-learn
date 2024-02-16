@@ -1,5 +1,4 @@
 import { Text } from '@chakra-ui/react';
-import React from 'react';
 
 const toBin = code => {
   return code.toString(2).toUpperCase().padStart(8, '0');

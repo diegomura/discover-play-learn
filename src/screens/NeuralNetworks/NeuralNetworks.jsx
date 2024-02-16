@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Button, Flex } from '@chakra-ui/react';
 
 import MLP from '../../modules/neural-networks/engine/mlp';

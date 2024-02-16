@@ -92,7 +92,7 @@ const scalarOperation1 = (scalar, v, op) => {
 };
 
 const initialiseArray = (length, value) => {
-  return map(new Array(length), x => value);
+  return map(new Array(length), () => value);
 };
 
 const initialise2DArray = length => {

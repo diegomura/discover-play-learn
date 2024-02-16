@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Link, Text, Card, CardBody, Icon } from '@chakra-ui/react';
 
 const TopicCard = ({ topic, href, icon, disabled }) => {

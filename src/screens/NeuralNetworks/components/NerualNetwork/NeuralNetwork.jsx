@@ -1,6 +1,6 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 
-import Neuron from './Neuron';
+import Neuron from './Neuron.jsx';
 
 const WIDTH = 1000;
 const HEIGHT = 700;
