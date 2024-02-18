@@ -1,11 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Root from './root';
-import Home from './home';
 import NotFound from './not-found';
-import NeuralNetworks from './neural-networks';
-import Utf8Encoding from './utf-8';
-import ThreeBodyProblem from './three-body-problem';
+import pages from './pages';
 
 const Router = ({ children }) => {
   return (
@@ -22,10 +19,10 @@ const Router = ({ children }) => {
 const Screens = () => {
   return (
     <Router>
-      <Route path="/" element={<Home />} />
-      <Route path="/utf-8" element={<Utf8Encoding />} />
-      <Route path="/neural-networks" element={<NeuralNetworks />} />
-      <Route path="/three-body-problem" element={<ThreeBodyProblem />} />
+      <Route path="/" Component={pages.Home} />
+      <Route path="/utf-8" Component={pages.Utf8Encoding} />
+      <Route path="/neural-networks" Component={pages.NeuralNetworks} />
+      <Route path="/three-body-problem" Component={pages.ThreeBodyProblem} />
     </Router>
   );
 };

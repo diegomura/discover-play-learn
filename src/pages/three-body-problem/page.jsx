@@ -6,8 +6,6 @@ import { OrbitControls, Stars } from '@react-three/drei';
 
 import createModel from '#/three-body';
 
-import sources from './sources';
-import Topic from '../../components/Topic';
 import Sun from './components/Sun';
 import Axes from './components/Axes';
 import Grid from './components/Grid';
@@ -61,28 +59,26 @@ const ThreeBodyProblem = () => {
   }, []);
 
   return (
-    <Topic title="Three Body Problem" theme="dark" sources={sources}>
-      <Canvas camera={camera} style={{ backgroundColor: 'black' }}>
-        <OrbitControls />
+    <Canvas camera={camera} style={{ backgroundColor: 'black' }}>
+      <OrbitControls />
 
-        <ambientLight />
-        <pointLight position={[10, 10, 10]} />
+      <ambientLight />
+      <pointLight position={[10, 10, 10]} />
 
-        {bodies.map((sun, i) => (
-          <Sun key={sun.id} mass={sun.mass} position={positions[i]} />
-        ))}
+      {bodies.map((sun, i) => (
+        <Sun key={sun.id} mass={sun.mass} position={positions[i]} />
+      ))}
 
-        {bodies.map((sun, i) => (
-          <Path key={sun.id} color={sun.color} position={positions[i]} />
-        ))}
+      {bodies.map((sun, i) => (
+        <Path key={sun.id} color={sun.color} position={positions[i]} />
+      ))}
 
-        <Stars radius={8000} count={7000} factor={4} saturation={0} speed={0} />
+      <Stars radius={8000} count={7000} factor={4} saturation={0} speed={0} />
 
-        <Grid />
+      <Grid />
 
-        <Axes />
-      </Canvas>
-    </Topic>
+      <Axes />
+    </Canvas>
   );
 };
 

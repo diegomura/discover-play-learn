@@ -4,8 +4,6 @@ import { Flex, Text } from '@chakra-ui/react';
 
 import * as utf8 from '#/utf-8';
 
-import sources from './sources';
-import Topic from '../../components/Topic';
 import Codes from './components/Codes';
 import HexCode from './components/HexCode';
 import BinCode from './components/BinCode';
@@ -61,7 +59,7 @@ const Utf8Encoding = () => {
   }, [hovered]);
 
   return (
-    <Topic title="UTF-8 Encoding" sources={sources}>
+    <>
       <Flex
         w="100%"
         h="calc(100vh - 210px)"
@@ -111,7 +109,7 @@ const Utf8Encoding = () => {
           onBlur={onCodeBlur}
         />
       </Flex>
-    </Topic>
+    </>
   );
 };
 

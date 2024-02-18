@@ -4,11 +4,9 @@ import MLP from '#/neural-networks/engine/mlp';
 import { createGradient } from '#/neural-networks/render/colors';
 
 import Loss from './components/Loss';
-import Topic from '../../components/Topic';
 import NeuralNetwork from './components/NerualNetwork';
 import ScatteredChart from './components/ScatteredChart';
 import Point from './utils/Point';
-import sources from './sources';
 
 const mlp = new MLP({ nin: 2, nouts: [3, 4, 1] });
 
@@ -119,7 +117,7 @@ const NeuralNetworks = () => {
   };
 
   return (
-    <Topic title="Neural Networks" sources={sources}>
+    <>
       <Flex
         w="100%"
         h="calc(100vh - 133px)"
@@ -155,7 +153,7 @@ const NeuralNetworks = () => {
           Train
         </Button>
       </Box>
-    </Topic>
+    </>
   );
 };
 
