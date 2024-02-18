@@ -6,7 +6,15 @@ import useInterval from '../../../../hooks/useInterval';
 const WIDTH = 600;
 const HEIGHT = 600;
 
-const ScatteredChart = ({ points = [], xAxis, yAxis, resolution, w, h }) => {
+const ScatteredChart = ({
+  points = [],
+  trainingData = [],
+  xAxis,
+  yAxis,
+  resolution,
+  w,
+  h,
+}) => {
   const canvasRef = useRef();
 
   useInterval(() => {
@@ -17,7 +25,8 @@ const ScatteredChart = ({ points = [], xAxis, yAxis, resolution, w, h }) => {
       xAxis,
       yAxis,
       points,
-      resolution
+      resolution,
+      trainingData
     );
   }, 100);
 

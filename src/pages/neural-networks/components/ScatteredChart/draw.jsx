@@ -58,7 +58,7 @@ const drawYAxis = ({ ctx, height, xAxis, yAxis, xScale, yScale }) => {
   ctx.restore();
 };
 
-const drawPoints = ({
+const drawMap = ({
   ctx,
   height,
   points,
@@ -73,7 +73,7 @@ const drawPoints = ({
   ctx.save();
 
   for (const point of points) {
-    if (point.color === 'black') continue;
+    if (!point.color) continue;
 
     const x = point.x - resolution / 2;
     const y = point.y - resolution / 2;
@@ -89,7 +89,35 @@ const drawPoints = ({
   ctx.restore();
 };
 
-const drawChart = (canvas, width, height, xAxis, yAxis, points, resolution) => {
+const drawPoints = ({ ctx, xAxis, xScale, yAxis, yScale, points }) => {
+  ctx.save();
+
+  for (const point of points) {
+    const x = point.value[0];
+    const y = point.value[1];
+    const cx = (x - xAxis[0]) * xScale;
+    const cy = (y - yAxis[0]) * yScale;
+
+    ctx.fillStyle = point.expected === 1 ? 'red' : 'blue';
+    ctx.beginPath();
+    ctx.arc(cx, cy, 5, 0, 2 * Math.PI);
+    ctx.closePath();
+    ctx.fill();
+  }
+
+  ctx.restore();
+};
+
+const drawChart = (
+  canvas,
+  width,
+  height,
+  xAxis,
+  yAxis,
+  points,
+  resolution,
+  trainingData
+) => {
   const ctx = canvas.getContext('2d');
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -97,7 +125,7 @@ const drawChart = (canvas, width, height, xAxis, yAxis, points, resolution) => {
   const xScale = width / (xAxis[1] - xAxis[0]);
   const yScale = height / (yAxis[1] - yAxis[0]);
 
-  drawPoints({
+  drawMap({
     ctx,
     height,
     points,
@@ -111,6 +139,15 @@ const drawChart = (canvas, width, height, xAxis, yAxis, points, resolution) => {
   drawXAxis({ ctx, width, height, xAxis, yAxis, xScale, yScale });
 
   drawYAxis({ ctx, width, height, xAxis, yAxis, xScale, yScale });
+
+  drawPoints({
+    ctx,
+    points: trainingData,
+    xAxis,
+    yAxis,
+    xScale,
+    yScale,
+  });
 };
 
 export default drawChart;

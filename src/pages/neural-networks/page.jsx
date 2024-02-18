@@ -6,13 +6,10 @@ import { createGradient } from '#/neural-networks/render/colors';
 import Loss from './components/Loss';
 import NeuralNetwork from './components/NerualNetwork';
 import ScatteredChart from './components/ScatteredChart';
-import Point from './utils/Point';
 
 const mlp = new MLP({ nin: 2, nouts: [3, 4, 1] });
 
 const trainingData = [
-  // center
-  { value: [0, 0], expected: 0 },
   // top-left
   { value: [-1, 1], expected: -1 },
   { value: [-1, 9], expected: -1 },
@@ -75,14 +72,14 @@ const gradient = createGradient({
   range: [-3, 3],
 });
 
-const resolution = 0.5;
+const resolution = 0.4;
 const xAxis = [-10, 10];
 const yAxis = [-10, 10];
 const testData = [];
 
 for (let x = xAxis[0] - 1; x <= xAxis[1] + 1; x += resolution) {
   for (let y = yAxis[0] - 1; y <= yAxis[1] + 1; y += resolution) {
-    testData.push(new Point({ x, y }));
+    testData.push({ x, y });
   }
 }
 
@@ -104,7 +101,7 @@ const NeuralNetworks = () => {
           const pred = mlp.call([point.x, point.y]);
           const color = gradient.get(pred.data);
 
-          point.setColor(color);
+          point.color = color;
         });
       }
 
@@ -133,6 +130,7 @@ const NeuralNetworks = () => {
           yAxis={yAxis}
           resolution={resolution}
           points={testData}
+          trainingData={trainingData}
         />
       </Flex>
 
