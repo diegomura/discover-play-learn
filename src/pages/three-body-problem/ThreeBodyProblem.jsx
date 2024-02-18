@@ -4,13 +4,14 @@ import { useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Stars } from '@react-three/drei';
 
+import createModel from '#/three-body';
+
 import sources from './sources';
 import Topic from '../../components/Topic';
 import Sun from './components/Sun';
 import Axes from './components/Axes';
 import Grid from './components/Grid';
 import Path from './components/Path';
-import createModel from '../../modules/three-body';
 
 const bodies = [
   {

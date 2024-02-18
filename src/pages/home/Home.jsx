@@ -36,11 +36,7 @@ const Home = () => {
         </Text>
 
         <SimpleGrid columns={4} spacing={4}>
-          <TopicCard
-            topic="UTF-8 Encoding"
-            icon={BiBarcode}
-            href="/utf-8-encoding"
-          />
+          <TopicCard topic="UTF-8 Encoding" icon={BiBarcode} href="/utf-8" />
 
           <TopicCard
             topic="Neural Networks"

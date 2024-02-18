@@ -14,7 +14,7 @@ import {
 } from '@chakra-ui/react';
 import { BiMenu } from 'react-icons/bi';
 
-import Link from '../../components/Link';
+import Link from '../components/Link';
 
 const Root = () => {
   const location = useLocation();
@@ -47,7 +47,7 @@ const Root = () => {
           <DrawerBody>
             <Stack direction="column">
               <Link to={`/`}>Home</Link>
-              <Link to={`/utf-8-encoding`}>UTF-8 Encoding</Link>
+              <Link to={`/utf-8`}>UTF-8 Encoding</Link>
               <Link to={`/neural-networks`}>Neural Networks</Link>
               <Link to={`/three-body-problem`}>Three Body Problem</Link>
             </Stack>

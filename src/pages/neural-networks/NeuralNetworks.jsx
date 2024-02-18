@@ -1,7 +1,7 @@
 import { Box, Button, Flex } from '@chakra-ui/react';
 
-import MLP from '../../modules/neural-networks/engine/mlp';
-import { createGradient } from '../../modules/neural-networks/render/colors';
+import MLP from '#/neural-networks/engine/mlp';
+import { createGradient } from '#/neural-networks/render/colors';
 
 import Loss from './components/Loss';
 import Topic from '../../components/Topic';

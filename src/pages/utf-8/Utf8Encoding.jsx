@@ -1,13 +1,14 @@
-import  { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { Flex, Text } from '@chakra-ui/react';
+
+import * as utf8 from '#/utf-8';
 
 import sources from './sources';
 import Topic from '../../components/Topic';
 import Codes from './components/Codes';
 import HexCode from './components/HexCode';
 import BinCode from './components/BinCode';
-import * as utf8 from '../../modules/utf-8';
 
 const INITIAL_TEXT = 'd1£ठ💩';
 
