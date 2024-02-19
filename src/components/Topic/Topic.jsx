@@ -17,10 +17,20 @@ import { BiBook } from 'react-icons/bi';
 import Source from './Source';
 import useTheme from '../../hooks/useTheme';
 
-const Topic = ({ title, theme = 'light', sources = [], children }) => {
+const Topic = ({
+  title,
+  theme = 'light',
+  sources = [],
+  documentation,
+  children,
+}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   useTheme(theme);
+
+  const drawerSize = documentation ? 'xl' : 'sm';
+
+  const drawerTitle = documentation ? 'Documentation' : 'Sources';
 
   return (
     <>
@@ -49,17 +59,28 @@ const Topic = ({ title, theme = 'light', sources = [], children }) => {
         {children}
       </Flex>
 
-      <Drawer placement="right" size="sm" onClose={onClose} isOpen={isOpen}>
+      <Drawer
+        placement="right"
+        size={drawerSize}
+        onClose={onClose}
+        isOpen={isOpen}
+      >
         <DrawerOverlay />
 
         <DrawerContent>
-          <DrawerHeader borderBottomWidth="1px">Sources</DrawerHeader>
+          <DrawerHeader borderBottomWidth="1px">{drawerTitle}</DrawerHeader>
 
           <DrawerBody>
             <Stack direction="column">
               {sources.map(source => (
                 <Source key={source.link} {...source} />
               ))}
+
+              {documentation && (
+                <div className="markdown">
+                  <documentation.ReactComponent />
+                </div>
+              )}
             </Stack>
           </DrawerBody>
         </DrawerContent>
