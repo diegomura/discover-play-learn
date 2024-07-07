@@ -4,9 +4,9 @@ import { Flex, Text } from '@chakra-ui/react';
 
 import * as utf8 from '#/utf-8';
 
-import Codes from './components/Codes';
-import HexCode from './components/HexCode';
-import BinCode from './components/BinCode';
+import Codes from './components/codes';
+import HexCode from './components/hex-code';
+import BinCode from './components/bin-code';
 
 const INITIAL_TEXT = 'd1£ठ💩';
 

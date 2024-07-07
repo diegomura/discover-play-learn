@@ -3,9 +3,9 @@ import { Box, Button, Flex } from '@chakra-ui/react';
 import MLP from '#/neural-networks/engine/mlp';
 import { createGradient } from '#/neural-networks/render/colors';
 
-import Loss from './components/Loss';
-import NeuralNetwork from './components/NerualNetwork';
-import ScatteredChart from './components/ScatteredChart';
+import Loss from './components/loss';
+import NeuralNetwork from './components/neural-network';
+import ScatteredChart from './components/scattered-chart';
 
 const mlp = new MLP({ nin: 2, nouts: [3, 4, 1] });
 

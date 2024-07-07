@@ -1,9 +1,10 @@
+import { mapValues } from 'lodash';
+
 import Home from './home';
 import NeuralNetworks from './neural-networks';
 import Utf8Encoding from './utf-8';
 import ThreeBodyProblem from './three-body-problem';
-import { mapValues } from 'lodash';
-import Topic from '../components/Topic';
+import Topic from '../components/topic';
 
 const pages = {
   Home,

@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import Root from './root';
+import Layout from '../components/layout';
 import NotFound from './not-found';
 import pages from './pages';
 
@@ -8,7 +8,7 @@ const Router = ({ children }) => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Root />} errorElement={<NotFound />}>
+        <Route path="/" element={<Layout />} errorElement={<NotFound />}>
           {children}
         </Route>
       </Routes>
@@ -16,7 +16,7 @@ const Router = ({ children }) => {
   );
 };
 
-const Screens = () => {
+const Pages = () => {
   return (
     <Router>
       <Route path="/" Component={pages.Home} />
@@ -27,4 +27,4 @@ const Screens = () => {
   );
 };
 
-export default Screens;
+export default Pages;

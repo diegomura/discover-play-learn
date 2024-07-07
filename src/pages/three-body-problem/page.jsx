@@ -6,10 +6,10 @@ import { OrbitControls, Stars } from '@react-three/drei';
 
 import createModel from '#/three-body';
 
-import Sun from './components/Sun';
-import Axes from './components/Axes';
-import Grid from './components/Grid';
-import Path from './components/Path';
+import Sun from './components/sun';
+import Axes from './components/axes';
+import Grid from './components/grid';
+import Path from './components/path';
 
 const bodies = [
   {

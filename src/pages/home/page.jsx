@@ -8,8 +8,8 @@ import {
   BiPlanet,
 } from 'react-icons/bi';
 
-import useTheme from '../../hooks/useTheme';
-import TopicCard from './components/TopicCard/TopicCard';
+import useTheme from '../../hooks/use-theme';
+import TopicCard from './components/topic-card';
 
 const Home = () => {
   useTheme('light');
