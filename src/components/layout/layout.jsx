@@ -50,6 +50,7 @@ const Root = () => {
               <Link to={`/utf-8`}>UTF-8 Encoding</Link>
               <Link to={`/neural-networks`}>Neural Networks</Link>
               <Link to={`/three-body-problem`}>Three Body Problem</Link>
+              <Link to={`/diffie-hellman`}>Diffie-Hellman</Link>
             </Stack>
           </DrawerBody>
         </DrawerContent>

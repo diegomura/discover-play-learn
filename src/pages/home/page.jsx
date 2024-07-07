@@ -3,7 +3,7 @@
 import { SimpleGrid, Heading, Stack, Center, Text } from '@chakra-ui/react';
 import {
   BiNetworkChart,
-  BiQuestionMark,
+  BiSolidKey,
   BiBarcode,
   BiPlanet,
 } from 'react-icons/bi';
@@ -51,10 +51,9 @@ const Home = () => {
           />
 
           <TopicCard
-            topic="Other soon..."
-            icon={BiQuestionMark}
-            href="/"
-            disabled
+            topic="Diffie-Hellman"
+            icon={BiSolidKey}
+            href="/diffie-hellman"
           />
         </SimpleGrid>
       </Stack>

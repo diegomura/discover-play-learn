@@ -23,6 +23,7 @@ const Pages = () => {
       <Route path="/utf-8" Component={pages.Utf8Encoding} />
       <Route path="/neural-networks" Component={pages.NeuralNetworks} />
       <Route path="/three-body-problem" Component={pages.ThreeBodyProblem} />
+      <Route path="/diffie-hellman" Component={pages.DiffieHellman} />
     </Router>
   );
 };

@@ -4,6 +4,7 @@ import Home from './home';
 import NeuralNetworks from './neural-networks';
 import Utf8Encoding from './utf-8';
 import ThreeBodyProblem from './three-body-problem';
+import DiffieHellman from './diffie-hellman';
 import Topic from '../components/topic';
 
 const pages = {
@@ -11,6 +12,7 @@ const pages = {
   NeuralNetworks,
   Utf8Encoding,
   ThreeBodyProblem,
+  DiffieHellman,
 };
 
 const addTopic = manifest => {
