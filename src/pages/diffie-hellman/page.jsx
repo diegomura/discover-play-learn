@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import { Box, Button, Flex, HStack } from '@chakra-ui/react';
+
+import create from '#/diffie-hellman';
+
 import Agent from './components/agent';
 import Channel from './components/channel';
-import create from '../../modules/diffie-hellman';
-import { useState } from 'react';
 
 const { network, simulator } = create();
 

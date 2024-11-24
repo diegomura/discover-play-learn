@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 
-import { Flex, Text } from '@chakra-ui/react';
+import { Text } from '@chakra-ui/react';
 
 import * as utf8 from '#/utf-8';
 
@@ -60,12 +60,7 @@ const Utf8Encoding = () => {
 
   return (
     <>
-      <Flex
-        w="100%"
-        h="calc(100vh - 210px)"
-        alignItems="center"
-        justifyContent="center"
-      >
+      <div className="flex h-[calc(100vh-210px)] w-full items-center justify-center">
         <Text
           ref={input}
           autoFocus
@@ -82,14 +77,9 @@ const Utf8Encoding = () => {
           onInput={handleChange}
           onMouseUp={onSelect}
         />
-      </Flex>
+      </div>
 
-      <Flex
-        h={210}
-        borderTopWidth={1}
-        borderTopStyle="solid"
-        borderColor="lightGray"
-      >
+      <div className="flex h-[210px] border-t border-neutral-400">
         <Codes
           title="HEX"
           CodeComponent={HexCode}
@@ -108,7 +98,7 @@ const Utf8Encoding = () => {
           onHover={onCodeHover}
           onBlur={onCodeBlur}
         />
-      </Flex>
+      </div>
     </>
   );
 };

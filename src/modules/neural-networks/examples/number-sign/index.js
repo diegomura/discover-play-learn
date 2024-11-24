@@ -1,8 +1,8 @@
 import { exec } from 'child_process';
 
-import MLP from '../../src/modules/neural-networks/engine/mlp.js';
-import { createGradient } from '../../src/modules/neural-networks/colors.js';
-import createScatteredChart from '../../src/modules/neural-networks/scattered-chart.js';
+import MLP from '#/neural-networks/engine/mlp.js';
+import { createGradient } from '#/neural-networks/colors.js';
+import createScatteredChart from '#/neural-networks/scattered-chart.js';
 
 // Create and train neuron network
 

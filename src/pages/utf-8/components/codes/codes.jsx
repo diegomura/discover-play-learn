@@ -1,12 +1,17 @@
-import { Flex, Text } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
+import classNames from 'classnames';
+
+import Text from '%/components/text';
 
 const Char = ({ codes, hovered, CodeComponent, onClick, onHover, onBlur }) => {
   return (
     <Text
       key={codes.join()}
       as="span"
-      cursor="pointer"
-      backgroundColor={hovered ? '#DADADA' : 'transparent'}
+      className={classNames(
+        'cursor-pointer',
+        hovered ? 'bg-neutral-200' : 'bg-transparent'
+      )}
       onClick={onClick}
       onMouseEnter={onHover}
       onMouseLeave={onBlur}
@@ -32,11 +37,9 @@ const HexCodes = ({
 
   return (
     <Flex w="50%" direction="column" p={5} style={style}>
-      <Text fontWeight="bold" mb={2}>
-        {title}
-      </Text>
+      <Text className="mb-2 font-bold">{title}</Text>
 
-      <Text fontSize={18} w="100%" wordBreak="break-word">
+      <Text className="w-fill break-words text-lg">
         {encoding.map((codes, i) => {
           if (codes.length === 4) offset += 1;
 

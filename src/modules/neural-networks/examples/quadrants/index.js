@@ -1,6 +1,7 @@
 import { exec } from 'child_process';
 
-import MLP from '../../src/modules/neural-networks/mlp.js';
+import MLP from '#/neural-networks/mlp.js';
+
 import { createGradient } from '../../src/render/colors.js';
 import createScatteredChart from '../../src/render/scattered-chart.js';
 

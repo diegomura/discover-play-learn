@@ -1,4 +1,4 @@
-import { Text } from '@chakra-ui/react';
+import Text from '%/components/text';
 
 const toBin = code => {
   return code.toString(2).toUpperCase().padStart(8, '0');
@@ -21,8 +21,8 @@ const BinCode = ({ value, index, of }) => {
   const right = bin.slice(dimChars + 1);
 
   return (
-    <Text as="span" mr={1} ml={1} fontWeight={500}>
-      <Text as="span" opacity={0.4}>
+    <Text as="span" className="mx-1 font-medium">
+      <Text as="span" className="opacity-40">
         {left}
       </Text>
       <Text as="span">{right}</Text>

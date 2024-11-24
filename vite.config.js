@@ -7,6 +7,7 @@ export default defineConfig({
   plugins: [react(), markdown.default({ mode: 'react' })],
   resolve: {
     alias: {
+      '%': fileURLToPath(new URL('./src', import.meta.url)),
       '#': fileURLToPath(new URL('./src/modules', import.meta.url)),
     },
   },

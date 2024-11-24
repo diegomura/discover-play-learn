@@ -1,4 +1,4 @@
-import { Text } from '@chakra-ui/react';
+import Text from '%/components/text';
 
 const toHex = code => {
   return code.toString(16).toUpperCase().padStart(2, '0');
@@ -6,7 +6,7 @@ const toHex = code => {
 
 const HexCode = ({ value }) => {
   return (
-    <Text as="span" mr={1} ml={1} fontWeight={500}>
+    <Text as="span" className="mx-1 font-medium">
       0x{toHex(value)}
     </Text>
   );

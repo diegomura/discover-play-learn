@@ -1,7 +1,8 @@
 import { useRef } from 'react';
 
+import useInterval from '%/hooks/use-interval';
+
 import drawChart from './draw';
-import useInterval from '../../../../hooks/use-interval';
 
 const WIDTH = 600;
 const HEIGHT = 600;

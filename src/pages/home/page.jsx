@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 
-import { SimpleGrid, Heading, Stack, Center, Text } from '@chakra-ui/react';
+import { SimpleGrid, Heading, Stack } from '@chakra-ui/react';
 import {
   BiNetworkChart,
   BiSolidKey,
@@ -8,27 +8,29 @@ import {
   BiPlanet,
 } from 'react-icons/bi';
 
-import useTheme from '../../hooks/use-theme';
+import Text from '%/components/text';
+import useTheme from '%/hooks/use-theme';
+
 import TopicCard from './components/topic-card';
 
 const Home = () => {
   useTheme('light');
 
   return (
-    <Center h="100vh" axis="both">
+    <div className="flex h-screen items-center justify-center">
       <Stack direction="column" align="center" maxW={700}>
         <Heading fontSize={60} mb={10}>
           Discover, Play, Learn
         </Heading>
 
-        <Text align="center" mb={10}>
+        <Text className="mb-10 text-center">
           The goal of this site is to serve as a personal (yet public)
           playground for exploring the topics I've been reading about and to
           have some fun, as well as a place to store references and perhaps some
           accompanying notes.
         </Text>
 
-        <Text align="center" mb={10}>
+        <Text className="mb-10 text-center">
           Don't expect anything on this site to make any sense! Topics may not
           even be related to each other or categorized within the field of
           Computer Science. I have no plans for it, and I might abandon it after
@@ -57,7 +59,7 @@ const Home = () => {
           />
         </SimpleGrid>
       </Stack>
-    </Center>
+    </div>
   );
 };
 
