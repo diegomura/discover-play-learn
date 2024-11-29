@@ -39,11 +39,20 @@
   height: auto;
 }
 
+.markdown ul {
+  list-style-type: circle;
+}
+
+.markdown ol {
+  list-style-type: decimal;
+}
+
 .markdown ul,
 .markdown ol {
   padding-left: 30px;
   margin-bottom: 1em;
   line-height: 1.5;
+  list-style-position: outside;
 }
 
 .markdown code {
