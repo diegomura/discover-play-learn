@@ -43,11 +43,9 @@ This averages to **1.75 questions** per symbol. With 100 symbols, Machine 1 need
 
 Shannon called this measure of uncertainty **entropy (H)**, measured in **bits**.
 
-In a more general way, entropy can be computed as the addition of the probability of each event multiplied by log2 of 1 over that probability.
+In a more general way, entropy can be computed as the summation for each symbol of the probability of that symbol times the logarithm base 2 of 1 over that probability.
 
-This is the summation for each symbol of the probability of that symbol times the logarithm base 2 of 1 over that probability.
-
-For our machine 2 equals to `0.5 + 0.5 + 0.375 + 0.375` or `1.75`
+For our machine 2, it equals to `0.5 + 0.5 + 0.375 + 0.375` or `1.75`
 
 By measuring how much information is in a message, Shannon also answered what’s the compression limit of that message without losing information.
 
