@@ -51,7 +51,9 @@ const Topic = ({
         </Button>
       </div>
 
-      <div className="flex h-screen flex-col pt-16">{children}</div>
+      <div className="flex h-screen max-h-screen flex-col pt-16">
+        {children}
+      </div>
 
       <Drawer
         placement="right"

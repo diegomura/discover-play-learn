@@ -20,4 +20,7 @@ module.exports = {
       { allowConstantExport: true },
     ],
   },
-}
+  globals: {
+    Highlight: true,
+  },
+};

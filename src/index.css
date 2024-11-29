@@ -71,6 +71,7 @@
 
 .markdown table {
   width: 100%;
+
   border-collapse: collapse;
 }
 
@@ -84,4 +85,10 @@
 
 .markdown th {
   background-color: #f2f2f2;
+}
+
+::highlight(text-highlight) {
+  background-color: #d4d4d4;
+  border-radius: 4px;
+  padding: 4px;
 }

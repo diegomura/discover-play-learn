@@ -6,6 +6,7 @@ import {
   BiSolidKey,
   BiBarcode,
   BiPlanet,
+  BiCode,
 } from 'react-icons/bi';
 
 import Text from '%/components/text';
@@ -56,6 +57,12 @@ const Home = () => {
             topic="Diffie-Hellman"
             icon={BiSolidKey}
             href="/diffie-hellman"
+          />
+
+          <TopicCard
+            topic="Huffman Coding"
+            icon={BiCode}
+            href="/huffman-coding"
           />
         </SimpleGrid>
       </Stack>

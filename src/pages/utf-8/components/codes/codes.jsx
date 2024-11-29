@@ -23,7 +23,7 @@ const Char = ({ codes, hovered, CodeComponent, onClick, onHover, onBlur }) => {
   );
 };
 
-const HexCodes = ({
+const Codes = ({
   title,
   encoding,
   hovered,
@@ -63,4 +63,4 @@ const HexCodes = ({
   );
 };
 
-export default HexCodes;
+export default Codes;
