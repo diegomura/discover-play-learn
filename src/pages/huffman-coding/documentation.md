@@ -88,7 +88,7 @@ One good aspect of how these trees are constructed is that the average length pe
 
 For a couple of years this was the best scheme people had to perform loseless compression, and produced optimal for a variety of distributions, but not always
 
-# Huffman Coding
+## Huffman Coding
 
 > Entropy is the limit of compression
 
